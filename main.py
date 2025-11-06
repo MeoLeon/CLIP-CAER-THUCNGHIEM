@@ -251,6 +251,12 @@ def run_eval(args: argparse.Namespace) -> None:
 
 # ==================== Entry Point ====================
 if __name__ == '__main__':
+    parser.add_argument('--text-type', type=str, default='class_descriptor')
+    parser.add_argument('--contexts-number', type=int, default=8)
+    parser.add_argument('--class-token-position', type=str, default='end')
+    parser.add_argument('--class-specific-contexts', type=bool, default=True)
+    parser.add_argument('--load_and_tune_prompt_learner', type=bool, default=True)
+
     args = parser.parse_args()
     args = setup_environment(args)
     args = setup_paths_and_logging(args)
