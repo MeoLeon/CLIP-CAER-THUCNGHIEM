@@ -141,7 +141,7 @@ def run_training(args: argparse.Namespace) -> None:
     
     # Build model
     print("=> Building model...")
-    #class_names, input_text = get_class_info(args)
+    class_names = get_class_info(args)
     model = build_model(args)
     model = model.to(args.device)
     print("=> Model built and moved to device successfully.")
@@ -225,7 +225,7 @@ def run_eval(args: argparse.Namespace) -> None:
     log_txt_path = os.path.join(args.output_path, 'log.txt')
     log_confusion_matrix_path = os.path.join(args.output_path, 'confusion_matrix.png')
 
-    #class_names, input_text = get_class_info(args)
+    class_names = get_class_info(args)
     #model = build_model(args, input_text)
     model = build_model(args, input_text=None)
     model = model.to(args.device)

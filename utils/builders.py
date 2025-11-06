@@ -5,7 +5,7 @@ from typing import Tuple
 import os
 import torch
 import torch.utils.data
-from clip import clip
+from models.clip import clip
 
 from dataloader.video_dataloader import train_data_loader, test_data_loader
 from models.Generate_Model import GenerateModel
@@ -19,8 +19,7 @@ def build_model(args: argparse.Namespace) -> torch.nn.Module:
     CLIP_visual = CLIP_model.visual
 
     print("\nInput Text Prompts:")
-    for text in input_text:
-        print(text)
+
 
     print("\nInstantiating GenerateModel...")
     #model = GenerateModel(input_text=input_text, clip_model=CLIP_model, args=args)
@@ -40,7 +39,7 @@ def build_model(args: argparse.Namespace) -> torch.nn.Module:
     return model
 
 
-'''def get_class_info(args: argparse.Namespace) -> Tuple[list, list]:
+def get_class_info(args: argparse.Namespace) -> Tuple[list, list]:
     """
     根据数据集和文本类型获取 class_names 和 input_text（用于生成 CLIP 模型文本输入）。
 
@@ -50,21 +49,10 @@ def build_model(args: argparse.Namespace) -> torch.nn.Module:
     """
     if args.dataset == "RAER":
         class_names = ['Neutrality', 'Enjoyment', 'Confusion', 'Fatigue', 'Distraction.']
-        class_names_with_context = class_names_with_context_5
-        class_descriptor = class_descriptor_5
     else:
         raise NotImplementedError(f"Dataset '{args.dataset}' is not implemented yet.")
 
-    if args.text_type == "class_names":
-        input_text = class_names
-    elif args.text_type == "class_names_with_context":
-        input_text = class_names_with_context
-    elif args.text_type == "class_descriptor":
-        input_text = class_descriptor
-    else:
-        raise ValueError(f"Unknown text_type: {args.text_type}")
-
-    return class_names, input_text'''
+    return class_names
 
 
 
