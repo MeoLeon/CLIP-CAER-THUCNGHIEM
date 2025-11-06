@@ -7,7 +7,7 @@ class GenerateModel(nn.Module):
     def __init__(self, clip_model, args):
         super().__init__()
         self.args = args
-        self.dtype = clip_model.dtype
+        self.dtype = next(clip_model.parameters()).dtype
         self.image_encoder = clip_model.visual
         self.temporal_net = Temporal_Transformer_Cls(num_patches=16,
                                                      input_dim=512,
