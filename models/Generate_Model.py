@@ -30,14 +30,14 @@ class GenerateModel(nn.Module):
         # Face Part
         n, t, c, h, w = image_face.shape
         image_face = image_face.contiguous().view(-1, c, h, w)
-        image_face_features = self.image_encoder(image_face.type(self.dtype))
+        image_face_features = self.image_encoder.encode_image(image_face.type(self.dtype))
         image_face_features = image_face_features.contiguous().view(n, t, -1)
         video_face_features = self.temporal_net(image_face_features)  # (4*512)
         
         # Body Part
         n, t, c, h, w = image_body.shape
         image_body = image_body.contiguous().view(-1, c, h, w)
-        image_body_features = self.image_encoder(image_body.type(self.dtype))
+        image_body_features = self.image_encoder.encode_image(image_body.type(self.dtype))
         image_body_features = image_body_features.contiguous().view(n, t, -1)
         video_body_features = self.temporal_net_body(image_body_features)
 
