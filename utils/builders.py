@@ -15,19 +15,19 @@ from utils.utils import *
 
 def build_model(args: argparse.Namespace) -> torch.nn.Module:
     print("Loading pretrained CLIP model...")
-    CLIP_model, _ = clip.load(args.clip_path, device='cpu')
-    #CLIP_visual = CLIP_model.visual
+    clip_model, _ = clip.load(args.clip_path, device='cpu')  # sửa tên biến thành clip_model
+    #CLIP_visual = clip_model.visual
 
     print("\nInput Text Prompts:")
 
-
     print("\nInstantiating GenerateModel...")
-    #model = GenerateModel(input_text=input_text, clip_model=CLIP_model, args=args)
-    model = GenerateModel(clip_model=CLIP_visual, args=args)
+    model = GenerateModel(clip_model=clip_model, args=args)  # giờ biến này đã tồn tại
 
+    # Đóng băng tất cả tham số
     for name, param in model.named_parameters():
         param.requires_grad = False
 
+    # Mở lại các phần cần huấn luyện
     trainable_params_keywords = ["image_encoder", "temporal_net", "temporal_net_body", "project_fc"]
     print('\nTrainable parameters:')
     for name, param in model.named_parameters():
@@ -37,6 +37,7 @@ def build_model(args: argparse.Namespace) -> torch.nn.Module:
     print('************************\n')
 
     return model
+
 
 
 def get_class_info(args: argparse.Namespace) -> Tuple[list, list]:
