@@ -16,7 +16,7 @@ from utils.utils import *
 def build_model(args: argparse.Namespace) -> torch.nn.Module:
     print("Loading pretrained CLIP model...")
     CLIP_model, _ = clip.load(args.clip_path, device='cpu')
-    CLIP_visual = CLIP_model.visual
+    #CLIP_visual = CLIP_model.visual
 
     print("\nInput Text Prompts:")
 

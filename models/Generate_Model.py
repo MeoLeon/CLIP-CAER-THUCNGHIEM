@@ -8,7 +8,7 @@ class GenerateModel(nn.Module):
         super().__init__()
         self.args = args
         self.dtype = next(clip_model.parameters()).dtype
-        self.image_encoder = clip_model.visual
+        self.image_encoder = clip_model
         self.temporal_net = Temporal_Transformer_Cls(num_patches=16,
                                                      input_dim=512,
                                                      depth=args.temporal_layers,
