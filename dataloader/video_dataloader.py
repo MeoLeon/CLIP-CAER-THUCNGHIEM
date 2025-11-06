@@ -107,6 +107,9 @@ class VideoDataset(data.Dataset):
         tmp = [x.strip().split(' ') for x in open(self.list_file)]
         self.sample_list = [item for item in tmp]
 
+        print("DEBUG HAHA: ", tmp)
+        print("DEBUG HAHA: ", self.sample_list)
+
 
     def _parse_list(self):
         #
