@@ -150,6 +150,7 @@ class VideoDataset(data.Dataset):
     def get(self, record, indices):
         video_frames_path = glob.glob(os.path.join(record.path, '*'))
         video_frames_path.sort()  
+        print("DEBUG HEHE VIDEOFRAME:", video_frames_path)
         random_num = random.random()
         images = list()
         images_face = list()

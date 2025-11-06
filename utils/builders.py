@@ -60,7 +60,9 @@ def get_class_info(args: argparse.Namespace) -> Tuple[list, list]:
 def build_dataloaders(args: argparse.Namespace) -> Tuple[torch.utils.data.DataLoader, torch.utils.data.DataLoader]: 
     train_annotation_file_path = args.train_annotation
     test_annotation_file_path = args.test_annotation
-    
+    print("Debug Hehe:", train_annotation_file_path)
+    print("Debug hehe:", test_annotation_file_path)
+
     print("Loading train data...")
     train_data = train_data_loader(
         list_file=train_annotation_file_path, num_segments=args.num_segments,
