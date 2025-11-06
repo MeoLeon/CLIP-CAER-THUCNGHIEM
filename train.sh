@@ -1,0 +1,32 @@
+#!/bin/bash
+
+python main.py \
+    --mode train \
+    --exper-name test \
+    --gpu 2 \
+    --epochs 20 \
+    --batch-size 8 \
+    --lr 0.01 \
+    --lr-image-encoder 0.00001 \
+    --lr-prompt-learner 0.001 \
+    --weight-decay 0.0001 \
+    --momentum 0.9 \
+    --milestones 10 15 \
+    --gamma 0.1 \
+    --temporal-layers 1 \
+    --num-segments 16 \
+    --duration 1 \
+    --image-size 224 \
+    --seed 42 \
+    --print-freq 10 \
+    --root-dir /media/F/FERDataset/AER-DB \
+    --train-annotation RAER/train_abs.txt \
+    --test-annotation RAER/test_abs.txt \
+    --clip-path /media/D/zlm/code/single_four/models/ViT-B-32.pt \
+    --bounding-box-face /media/F/FERDataset/AER-DB/RAER/bounding_box/face_abs.json \
+    --bounding-box-body /media/F/FERDataset/AER-DB/RAER/bounding_box/body_abs.json \
+    --text-type class_descriptor \
+    --contexts-number 8 \
+    --class-token-position end \
+    --class-specific-contexts True \
+    --load_and_tune_prompt_learner True
