@@ -3,7 +3,7 @@ from models.Temporal_Model import *
 #from models.Prompt_Learner import *
 #import copy
 import numpy as np
-from self_attention import SelfAttention # Nếu bạn lưu file self_attention.py
+from models.self_attention import SelfAttention # Nếu bạn lưu file self_attention.py
 # Hoặc paste class SelfAttention trực tiếp vào file này
 
 class GenerateModel(nn.Module):
